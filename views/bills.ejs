@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>My bills</h1>
+    <ul>
+    <% bills.forEach( el => { %>
+            <li class='billItem' data-id='<%=el._id%>'>
+                <span> <%= el.name %> </span>
+                <span class='del'> Delete </span>
+            </li>
+    <% }) %>    
+    </ul>
+
+
+    <form action="/bills/createBill" method='POST'>
+        <input type="text" placeholder="Enter the bill company" name='billName'>
+        <input type="text" placeholder="Enter the account number you are using" name='billAccount'>
+        <input type="text" placeholder="Enter the bill price" name='billPrice'>
+        <input type="submit">
+    </form>
+
+    <a href="/logout">Logout</a>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
