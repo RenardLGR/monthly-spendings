@@ -30,7 +30,7 @@ function showTotal(){
     let total = Array.from(prices).reduce((acc, cur) => acc + Number(cur.innerHTML), 0)
     let totalAmountCells = document.querySelectorAll('.total-amount-cell')
     Array.from(totalAmountCells).forEach(td => {
-        td.innerHTML = total
+        td.innerHTML = total/2
     })
 }
 
