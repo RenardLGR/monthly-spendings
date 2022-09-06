@@ -9,14 +9,68 @@
 </head>
 <body>
     <h1>My bills</h1>
-    <ul>
-    <% bills.forEach( el => { %>
-            <li class='billItem' data-id='<%=el._id%>'>
-                <span> <%= el.name %> </span>
-                <span class='del'> Delete </span>
-            </li>
-    <% }) %>    
-    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Account</th>
+                <th class="sort">Price</th>
+                <th>Delete</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody class="default">
+            <% bills.forEach( el => { %>
+            <tr>
+                <td class='billItem billName' data-id='<%=el._id%>'>
+                    <%= el.name %>
+                </td>
+                <td class='billItem billAccount' data-id='<%=el._id%>'>
+                    <%= el.accountNumber %>
+                </td>
+                <td class='billItem billPrice' data-id='<%=el._id%>'>
+                    <%= el.price %>
+                </td>
+                <td class='billItem billDelete' data-id='<%=el._id%>'>
+                    <span class="del">X</span>
+                </td>
+            </tr>
+            <% }) %>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="total-amount-cell"></td>
+            </tr>
+        </tbody>
+
+        <tbody class="sorted hidden">
+            <% bills.sort( (a, b) => a.price - b.price).forEach( el => { %>
+            <tr>
+                <td class='billItem billName' data-id='<%=el._id%>'>
+                    <%= el.name %>
+                </td>
+                <td class='billItem billAccount' data-id='<%=el._id%>'>
+                    <%= el.accountNumber %>
+                </td>
+                <td class='billItem billPrice' data-id='<%=el._id%>'>
+                    <%= el.price %>
+                </td>
+                <td class='billItem billDelete' data-id='<%=el._id%>'>
+                    <span class="del">X</span>
+                </td>
+            </tr>
+            <% }) %>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="total-amount-cell"></td>
+            </tr>
+        </tbody>   
+    </table>
 
 
     <form action="/bills/createBill" method='POST'>
